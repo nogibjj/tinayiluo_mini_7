@@ -1,8 +1,6 @@
 ## Package a Python Script into a Command-Line Tool
 [![CI](https://github.com/nogibjj/tinayiluo_mini_6/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/tinayiluo_mini_6/actions/workflows/cicd.yml)
 
-mini_7_project 
-
 Week 7: Package a Python Script into a Command-Line Tool
 Requirements
 * Package a Python script with setuptools or a similar tool
@@ -16,6 +14,8 @@ Deliverables
 * User guide (PDF or markdown)
 
 ### Goal
+
+The goal of this project is to create an ETL-Query pipeline utilizing a cloud service like Databricks AND create an executable by packaging the project. This pipeline will involve tasks such as extracting data from FiveThirtyEight's public datasets, cleaning and transforming the data, then loading it into Databricks SQL Warehouse. Once the data is in place, we'll be able to run complex queries that may involve tasks like joining tables, aggregating data, and sorting results. This will be accomplished by establishing a database connection to Databricks. You can find the user guide here
 
 + Automate the interaction between the Python script and the SQL database.
 
