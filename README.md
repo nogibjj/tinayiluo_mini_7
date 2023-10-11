@@ -13,6 +13,50 @@ Deliverables
 * Python package
 * User guide (PDF or markdown)
 
+Mini 7: 
+
+Use mini_6 as a template
+
+File need to be changed: 
+main.py
+Setup.py
+Makefile
+Requirement.txt
+cicd.yml
+
+1. Setup.py
+Make script into a package called ETLpipelineTinaYi : whole package includes mylib and main.py
+my lib is a package inside the whole ETLpipelineTinaYi package 
+
+Setup
+First part creating package 
+Second part install requirements 
+Third part create entry point: making the command line to make the package executable (Running main.py using ETL query. / Replace Python main.py with ETL_query)
+
+2. Main.py 
+add help line to user who uses it 
+(etl_query —help)
+
+3. Makefile
+(Make everything using etl_query command line) 
+Revise extract
+Revise transform load 
+Revise query 
+Revise setup_package 
+
+4. Requirement 
+setuptools (optional)
+
+5. cicd.yml
+Add “Install local package” (install your script, which is a package) 
+The difference between install package and install local package is that, install package install the requirements.txt, install local package is installing script
+
+6. Add user_guide.md (how to use the etl_query command line) 
+The last part install requirement refer to requirement in the setup
+
+7. Architectural diagram 
+(Add using etl_query as command line) 
+
 ### Goal
 
 The goal of this project is to create an ETL-Query pipeline utilizing a cloud service like Databricks AND create an executable by packaging the project. This pipeline will involve tasks such as extracting data from FiveThirtyEight's public datasets, cleaning and transforming the data, then loading it into Databricks SQL Warehouse. Once the data is in place, we'll be able to run complex queries that may involve tasks like joining tables, aggregating data, and sorting results. This will be accomplished by establishing a database connection to Databricks. You can find the user guide here
