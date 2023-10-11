@@ -11,6 +11,7 @@ LOG_FILE = "query_log.md"
 def log_query(query, result="none"):
     """adds to a query markdown file"""
     with open(LOG_FILE, "a") as file:
+        # add this to write properly because before it didn't convert properly
         file.write(f"```sql\n{query}\n```\n\n")
         file.write(f"```response from databricks\n{result}\n```\n\n")
 
@@ -31,4 +32,4 @@ def general_query(query):
         c.execute(query)
         result = c.fetchall()
     c.close()
-    log_query(f"{query}", result)
+    log_query(f"{query}", f"{result}")

@@ -7,6 +7,8 @@ requests==2.26.0
 #rust based linter
 ruff==0.0.284
 # add necessary databricks req
+numpy
 pandas
 python-dotenv
 databricks-sql-connector
+setuptools
