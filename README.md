@@ -1,5 +1,17 @@
-## Complex SQL Query for a MySQL Database
+## Package a Python Script into a Command-Line Tool
 [![CI](https://github.com/nogibjj/tinayiluo_mini_6/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/tinayiluo_mini_6/actions/workflows/cicd.yml)
+
+Week 7: Package a Python Script into a Command-Line Tool
+Requirements
+* Package a Python script with setuptools or a similar tool
+* Include a user guide on how to install and use the tool
+* Include communication with an external or internal database (NoSQL, SQL, etc)
+Grading Criteria
+* Functionality of the tool (20 points)
+* User guide clarity (20 points)
+Deliverables
+* Python package
+* User guide (PDF or markdown)
 
 ### Goal
 
