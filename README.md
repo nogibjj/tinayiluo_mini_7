@@ -1,6 +1,8 @@
 ## Package a Python Script into a Command-Line Tool
 [![CI](https://github.com/nogibjj/tinayiluo_mini_6/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/tinayiluo_mini_6/actions/workflows/cicd.yml)
 
+mini_7_project 
+
 Week 7: Package a Python Script into a Command-Line Tool
 Requirements
 * Package a Python script with setuptools or a similar tool
