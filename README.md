@@ -7,13 +7,14 @@ The goal of this project is to create a python package ETL-Query pipeline utiliz
 
 The workflow includes running a Makefile to perform tasks such as installation (`make install`), testing (`make test`), code formatting (`make format`) with Python Black, linting (`make lint`) with Ruff, and an all-inclusive task (`make all`) using `Github Actions`. This automation streamlines the data analysis process and enhances code quality.
 
-The ETL-Query script is a command-line interface (CLI) tool that performs Extract, Transform, Load (ETL) operations and executes general queries. You can find the user guide here [] 
+The ETL-Query script is a command-line interface (CLI) tool that performs Extract, Transform, Load (ETL) operations and executes general queries. You can find the user guide here: 
+[User Guide](./user_guide.md)
 
 ### Architectural Diagram 
 
 Below is the Architecture Diagram showcase the connection and flow between Python scripts and the Azure Databricks Database.
 
-![SQL Python Script and Azure Databricks drawio](https://github.com/nogibjj/tinayiluo_mini_6/assets/143360909/25ed0bb8-3c03-4937-938e-a2ee3578e8a8)
+![Python Package ETL Query drawio](https://github.com/nogibjj/tinayiluo_mini_7/assets/143360909/7625c5b3-bb0c-4f7c-902f-3de9aa77d419)
 
 ### Preperation
 
@@ -284,6 +285,9 @@ In summary, this query joins two datasets, aggregates certain metrics across two
 
 <img width="834" alt="Screen Shot 2023-10-08 at 5 05 10 PM" src="https://github.com/nogibjj/tinayiluo_mini_6/assets/143360909/e3b8864c-d463-4ccf-9b3e-e195f27c815a">
 
+### User Guide:
+The ETL-Query script is a command-line interface (CLI) tool that performs Extract, Transform, Load (ETL) operations and executes general queries. You can find the user guide here: 
+[User Guide](./user_guide.md)
 
 ### Make Format, Test, Lint, All Approval Image
 
