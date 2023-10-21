@@ -1,5 +1,5 @@
 ## Package a Python Script into a Command-Line Tool
-[![CI](https://github.com/nogibjj/tinayiluo_mini_6/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/tinayiluo_mini_6/actions/workflows/cicd.yml)
+[![CI](https://github.com/nogibjj/tinayiluo_mini_7/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/tinayiluo_mini_7/actions/workflows/cicd.yml)
 
 ### Goal
 
