@@ -137,8 +137,6 @@ The dataset `airline-safety.csv` originates from the Aviation Safety Network and
       - Logs the query and its results.
       - Closes the database connection.
 
-<img width="748" alt="Screen Shot 2023-10-08 at 6 25 05 PM" src="https://github.com/nogibjj/tinayiluo_sqlite_lab/assets/143360909/e642c00e-7481-4ad9-b325-4fd50e338152">
-
 #### Step 5: Implement Main Script
 - Convert the `main.py` into a command-line tool that run each step independantly:
   - Extract
@@ -150,7 +148,32 @@ The dataset `airline-safety.csv` originates from the Aviation Safety Network and
   - Test data extraction.
   - Test data transformation and loading.
   - Test SQL queries, especially those involving joins, aggregation, and sorting.
-
+    ```
+    def test_general_query():
+    """tests general_query()"""
+    query = """
+    SELECT
+        a.airline,
+        (a.incidents_85_99 + b.incidents_00_14) AS total_incidents,
+        a.fatal_accidents_85_99 + b.fatalities_85_99 AS total_fatalities_85_99,
+        b.fatal_accidents_00_14 + b.fatalities_00_14 AS total_fatalities_00_14
+    FROM 
+        default.AirlineSafety1DB AS a
+    JOIN 
+        default.AirlineSafety2DB AS b
+    ON 
+        a.id = b.id
+    ORDER BY 
+        total_incidents DESC LIMIT 10;
+    """
+    result = subprocess.run(
+        ["python", "main.py", "general_query", query],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    assert result.returncode == 0
+    ```
 #### Step 7: Streamline with Makefile
 - Utilize Makefile to automate tasks with Github Actions.
 - add:
