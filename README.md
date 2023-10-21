@@ -1,77 +1,23 @@
 ## Package a Python Script into a Command-Line Tool
 [![CI](https://github.com/nogibjj/tinayiluo_mini_6/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/tinayiluo_mini_6/actions/workflows/cicd.yml)
 
-Week 7: Package a Python Script into a Command-Line Tool
-Requirements
-* Package a Python script with setuptools or a similar tool
-* Include a user guide on how to install and use the tool
-* Include communication with an external or internal database (NoSQL, SQL, etc)
-Grading Criteria
-* Functionality of the tool (20 points)
-* User guide clarity (20 points)
-Deliverables
-* Python package
-* User guide (PDF or markdown)
-
-Mini 7: 
-
-Use mini_6 as a template
-
-File need to be changed: 
-main.py
-Setup.py
-Makefile
-Requirement.txt
-cicd.yml
-
-1. Setup.py
-Make script into a package called ETLpipelineTinaYi : whole package includes mylib and main.py
-my lib is a package inside the whole ETLpipelineTinaYi package 
-
-Setup
-First part creating package 
-Second part install requirements 
-Third part create entry point: making the command line to make the package executable (Running main.py using ETL query. / Replace Python main.py with ETL_query)
-
-2. Main.py 
-add help line to user who uses it 
-(etl_query —help)
-
-3. Makefile
-(Make everything using etl_query command line) 
-Revise extract
-Revise transform load 
-Revise query 
-Revise setup_package 
-
-4. Requirement 
-setuptools (optional)
-
-5. cicd.yml
-Add “Install local package” (install your script, which is a package) 
-The difference between install package and install local package is that, install package install the requirements.txt, install local package is installing script
-
-6. Add user_guide.md (how to use the etl_query command line) 
-The last part install requirement refer to requirement in the setup
-
-7. Architectural diagram 
-(Add using etl_query as command line) 
-
 ### Goal
 
-The goal of this project is to create an ETL-Query pipeline utilizing a cloud service like Databricks AND create an executable by packaging the project. This pipeline will involve tasks such as extracting data from FiveThirtyEight's public datasets, cleaning and transforming the data, then loading it into Databricks SQL Warehouse. Once the data is in place, we'll be able to run complex queries that may involve tasks like joining tables, aggregating data, and sorting results. This will be accomplished by establishing a database connection to Databricks. You can find the user guide here
-
-+ Automate the interaction between the Python script and the SQL database.
-
-+ Implement a Python script to interface with the SQL database on Azure Databricks.
-
-+ Design a complex SQL query involving joins, aggregation, and sorting. 
+The goal of this project is to create a python package ETL-Query pipeline utilizing a cloud service like Databricks. This pipeline will involve tasks such as extracting data from FiveThirtyEight's public datasets, cleaning and transforming the data, then loading it into Databricks SQL Warehouse. Once the data is in place, we'll be able to run complex queries that may involve tasks like joining tables, aggregating data, and sorting results. This will be accomplished by establishing a database connection to Databricks. 
 
 The workflow includes running a Makefile to perform tasks such as installation (`make install`), testing (`make test`), code formatting (`make format`) with Python Black, linting (`make lint`) with Ruff, and an all-inclusive task (`make all`) using `Github Actions`. This automation streamlines the data analysis process and enhances code quality.
 
+The ETL-Query script is a command-line interface (CLI) tool that performs Extract, Transform, Load (ETL) operations and executes general queries. You can find the user guide here [] 
+
+### Architectural Diagram 
+
+Below is the Architecture Diagram showcase the connection and flow between Python scripts and the Azure Databricks Database.
+
+![SQL Python Script and Azure Databricks drawio](https://github.com/nogibjj/tinayiluo_mini_6/assets/143360909/25ed0bb8-3c03-4937-938e-a2ee3578e8a8)
+
 ### Preperation
 
-+ I forked tinayiluo_sqlite_lab.
++ I forked tinayiluo_mini_6.
 
 + I chose the Airline safety dataset `airline-safety.csv` from Github.
 
@@ -83,27 +29,68 @@ The dataset `airline-safety.csv` originates from the Aviation Safety Network and
 
 ### Overview
 
-- **Objective:** Connect a Python script to a SQL Database on Azure Databricks and perform complex SQL queries involving joins, aggregation, and sorting.
-- **Key Takeaway:** Leveraging the power of the cloud with Azure for database operations.
-
-#### Step 1: Setting Up Azure Databricks
+#### - Setting Up Azure Databricks
 - Create a new database warehouse in Azure Databricks.
 - Generate authentication tokens for secure access.
 
-#### Step 2: Prepare the Development Environment
+#### - Prepare the Development Environment
 - Install necessary libraries and requirements in `requirements.txt`:
   - Databricks specific requirements:
     - pandas
     - python-dotenv
     - databricks-sql-connector
+  - Packaging Python projects:
+    - setuptools
 
-#### Step 3: Configure Environment Variables
+#### - Configure Environment Variables
 - Set up the `.env` file with the following:
   - SERVER_HOSTNAME
   - HTTP_PATH
   - ACCESS_TOKEN
 
-#### Step 4: ETL-Query
+#### - Package python script in setup.py
+- Setup.py
+  - Packages the script into a named package, "ETLpipelineTinaYi".
+  - The entire package includes components such as "mylib" and "main.py".
+  - "mylib" is a sub-package inside the main "ETLpipelineTinaYi" package.
+- Setup Function's Roles
+  - First Part: Package creation
+    - Creates the package and defines its metadata.
+  - Second Part: Installation requirements
+    - Specifies dependencies required for the package to run.
+  - Third Part: Entry point creation
+    - Establishes a command line interface, making the package executable.
+    - Allows running the package by using the command ETL_query in place of python main.py.
+- Overall Purpose of the Script
+  - The script turns a Python module or library into a distributable package named "ETLpipelineTinaYi".
+  - Once installed, users can invoke the etl_query command from their terminal.
+  - This command executes an ETL process, which is represented by the main function in the main module.
+
+```
+from setuptools import setup, find_packages
+
+# make sure the etl script outputs properly
+setup(
+    name="ETLpipelineTinaYi",
+    version="0.1.0",
+    description="ETLpipline",
+    author="Tina Yi",
+    author_email="tina.yi@duke.edu",
+    packages=find_packages(),
+    install_requires=[
+        "databricks-sql-connector",
+        "pandas",
+        "python-dotenv",
+    ],
+    entry_points={
+        "console_scripts": [
+            "etl_query=main:main",
+        ],
+    },
+)
+```
+
+#### - ETL-Query
 - In my.lib, add extract.py, transform_load.py and query.py that perform:
 
       * ETL-Query:  [E] Extract a dataset from URL, [T] Transform, [L] Load into SQLite Database and [Q] Query
@@ -137,13 +124,14 @@ The dataset `airline-safety.csv` originates from the Aviation Safety Network and
       - Logs the query and its results.
       - Closes the database connection.
 
-#### Step 5: Implement Main Script
+#### - Implement Main Script
 - Convert the `main.py` into a command-line tool that run each step independantly:
   - Extract
   - Transform and Load
   - General query execution
+- Add help line to user who uses it (etl_query —help)
 
-#### Step 6: Automated Testing
+#### - Automated Testing
 - Implement `test_main.py` to:
   - Test data extraction.
   - Test data transformation and loading.
@@ -174,35 +162,80 @@ The dataset `airline-safety.csv` originates from the Aviation Safety Network and
     )
     assert result.returncode == 0
     ```
-#### Step 7: Streamline with Makefile
+#### - Streamline with Makefile
 - Utilize Makefile to automate tasks with Github Actions.
+- Make everything using etl_query command line
 - add:
 
 ```bash
 extract:
-	python main.py extract
+	etl_query extract
 
 transform_load: 
-	python main.py transform_load
+	etl_query transform_load
 
 query:
-	python main.py general_query "SELECT a.airline, (a.incidents_85_99 + b.incidents_00_14) AS total_incidents, a.fatal_accidents_85_99 + b.fatalities_85_99 AS total_fatalities_85_99, b.fatal_accidents_00_14 + b.fatalities_00_14 AS total_fatalities_00_14 FROM default.AirlineSafety1DB AS a JOIN default.AirlineSafety2DB AS b ON a.id = b.id ORDER BY total_incidents DESC LIMIT 10;"
+	etl_query general_query "SELECT a.airline, (a.incidents_85_99 + b.incidents_00_14) AS total_incidents, a.fatal_accidents_85_99 + b.fatalities_85_99 AS total_fatalities_85_99, b.fatal_accidents_00_14 + b.fatalities_00_14 AS total_fatalities_00_14 FROM default.AirlineSafety1DB AS a JOIN default.AirlineSafety2DB AS b ON a.id = b.id ORDER BY total_incidents DESC LIMIT 10;"
+
+setup_package: 
+	python setup.py develop --user
 ``` 
-#### Step 8: Monitor Query Logs
+#### - Monitor Query Logs
 - Use `query_log.md` to keep a record of every change made to the SQL queries.
 - Command-line usage examples:
-  - `python main.py general_query "..."`
+  - `etl_query general_query "..."`
   - `python test_main.py test_general_query`
   - `make query`
 
-#### Step 9: CI/CD Setup with GitHub Actions
+#### - CI/CD Setup with GitHub Actions
 - Configure `cicd.yml` within GitHub Actions.
-- Add necessary secrets from the `.env` file to GitHub:
+- Add necessary secrets from the `.env` file to GitHub (Secrets facilitate the connection between GitHub Actions and the Azure data warehouse.):
   - SERVER_HOSTNAME
   - HTTP_PATH
   - ACCESS_TOKEN
-- Explanation: Secrets facilitate the connection between GitHub Actions and the Azure data warehouse.
+- The step named "install packages" uses the make install command, installs dependencies listed in a requirements.txt file.
+- The "install local package" step runs the make setup_package command, which is used for installing the script itself. 
+- Subsequent steps include linting the code, extracting data, transforming and loading data, querying data, running tests, formatting the code, generating output and pushing it, and finally deploying the code or application.
+```
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Environment Variables
+        run: |
+          echo "SERVER_HOSTNAME=${{ secrets.SERVER_HOSTNAME }}" >> $GITHUB_ENV
+          echo "HTTP_PATH=${{ secrets.HTTP_PATH }}" >> $GITHUB_ENV
+          echo "ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }}" >> $GITHUB_ENV
+      - name: install packages
+        run: make install
+      - name: install local package
+        run: make setup_package
+      - name: lint
+        run: make lint
+      - name: extract 
+        run: make extract 
+      - name: transform_load
+        run: make transform_load 
+      - name: query
+        run: make query
+      - name: test
+        run: make test
+      - name: format
+        run: make format
+      - name: generate_and_push
+        run: make generate_and_push
+      - name: deploy
+        run: make deploy
+```
 ### Query Functionality
 
 My SQL query performs several operations that highlight the use of joins, aggregation, and sorting:
@@ -251,11 +284,6 @@ In summary, this query joins two datasets, aggregates certain metrics across two
 
 <img width="834" alt="Screen Shot 2023-10-08 at 5 05 10 PM" src="https://github.com/nogibjj/tinayiluo_mini_6/assets/143360909/e3b8864c-d463-4ccf-9b3e-e195f27c815a">
 
-### Architectural Diagram 
-
-Below is the Architecture Diagram showcase the connection and flow between Python scripts and the Azure Databricks Database.
-
-![SQL Python Script and Azure Databricks drawio](https://github.com/nogibjj/tinayiluo_mini_6/assets/143360909/25ed0bb8-3c03-4937-938e-a2ee3578e8a8)
 
 ### Make Format, Test, Lint, All Approval Image
 
