@@ -287,5 +287,7 @@ In summary, this query joins two datasets, aggregates certain metrics across two
 
 ### Make Format, Test, Lint, All Approval Image
 
-<img width="1022" alt="Screen Shot 2023-10-08 at 7 55 24 PM" src="https://github.com/nogibjj/tinayiluo_mini_6/assets/143360909/1550aa2c-9943-4c53-a508-3dbdc62921b9">
-<img width="1019" alt="Screen Shot 2023-10-08 at 7 54 48 PM" src="https://github.com/nogibjj/tinayiluo_mini_6/assets/143360909/3a832449-b8b5-4d0b-a7f1-a5ae4301c48b">
+<img width="1166" alt="Screen Shot 2023-10-21 at 12 46 55 PM" src="https://github.com/nogibjj/tinayiluo_mini_7/assets/143360909/d912b3cb-8578-4cda-9163-798e04f8e928">
+
+<img width="1142" alt="Screen Shot 2023-10-21 at 12 47 26 PM" src="https://github.com/nogibjj/tinayiluo_mini_7/assets/143360909/2c28fef7-7432-4d5c-8517-135c70dd2067">
+
