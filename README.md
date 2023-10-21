@@ -295,3 +295,7 @@ The ETL-Query script is a command-line interface (CLI) tool that performs Extrac
 
 <img width="1142" alt="Screen Shot 2023-10-21 at 12 47 26 PM" src="https://github.com/nogibjj/tinayiluo_mini_7/assets/143360909/2c28fef7-7432-4d5c-8517-135c70dd2067">
 
+### References
+- https://github.com/databricks/databricks-sql-python
+- https://github.com/nogibjj/cloud-database-LAB
+- https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse
